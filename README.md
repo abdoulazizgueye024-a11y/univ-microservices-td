@@ -4,7 +4,7 @@ Ce projet utilise **un seul `pom.xml` et un seul code source Maven**, mais **six
 
 ## Prérequis
 
-- JDK 21 (ou version compatible avec les dépendances), Maven Wrapper (`mvnw.cmd` sous Windows)
+- JDK 27 (ou version compatible avec les dépendances), Maven Wrapper (`mvnw.cmd` sous Windows)
 - PostgreSQL accessible sur `localhost:5433`, base `ecommerce`, utilisateur `postgres`, mot de passe `root` (ou variables `DB_URL`, `DB_USER`, `DB_PASSWORD`).
 - Docker facultatif : `docker compose up -d` pour démarrer PostgreSQL si Docker est installé.
 
@@ -37,7 +37,7 @@ Ouvrir **six terminaux**, dans ce même dossier, et lancer dans l'ordre :
 |---|---:|---|
 | Eureka Server | 8761 | http://localhost:8761 |
 | Config Server | 8888 | http://localhost:8888/application/default |
-| Gateway | 8080 | http://localhost:9000 |
+| Gateway | 9000 | http://localhost:9000 |
 | Catalogue | 8081 | http://localhost:8081/swagger-ui.html |
 | Commandes | 8082 | http://localhost:8082/swagger-ui.html |
 | Paiements | 8083 | http://localhost:8083/swagger-ui.html |
