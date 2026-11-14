@@ -1,0 +1,5 @@
+TESTS HTTP 404
+
+Produit inexistant | HTTP 404 | OK
+Commande inexistante | HTTP 404 | OK
+Paiement inexistant | HTTP 404 | OK

@@ -1,0 +1,10 @@
+VERIFICATION DU SCENARIO METIER
+
+Produit associe : OK
+Nom du produit : OK
+Quantite commandee : OK
+Prix unitaire : OK
+Calcul du total : OK
+Paiement lie a la commande : OK
+Montant du paiement : OK
+Paiement accepte : OK

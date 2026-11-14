@@ -1,0 +1,29 @@
+VERIFICATION CRUD - CATALOGUE SERVICE
+
+Source : resultats observes dans la console PowerShell.
+Acces : API Gateway http://localhost:9012
+Produit temporaire : identifiant 2
+
+1. POST /api/v1/produits
+   HTTP 201 - Produit temporaire cree.
+
+2. PUT /api/v1/produits/2
+   HTTP 200 - Modification acceptee.
+
+3. GET /api/v1/produits/2
+   HTTP 200 - Modification verifiee.
+   Nom : Produit CRUD modifie
+   Prix : 39.99
+   Stock : 7
+
+4. DELETE /api/v1/produits/2
+   HTTP 204 - Suppression acceptee.
+
+5. GET /api/v1/produits/2
+   HTTP 404 - Suppression confirmee.
+
+Le produit temporaire a ete supprime.
+Le produit initial ID 1 n'a pas ete utilise pour ces tests.
+
+Note : ce fichier est une transcription des resultats
+observes, et non une capture automatique de la console.

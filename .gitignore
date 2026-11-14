@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Identifiants locaux Docker Compose
+.env
+
+# Sauvegardes locales Docker Compose
+compose.yaml.bak-*
+
+# Sauvegardes locales non publiees
+.local-backups/

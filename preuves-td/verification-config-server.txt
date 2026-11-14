@@ -1,0 +1,7 @@
+VERIFICATION CONFIG SERVER
+Serveur : http://localhost:8891
+
+catalogue-service | OK | Sources : 1
+commande-service | OK | Sources : 1
+paiement-service | OK | Sources : 1
+gateway-service | OK | Sources : 1

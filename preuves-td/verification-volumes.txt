@@ -1,0 +1,5 @@
+VERIFICATION DES VOLUMES POSTGRESQL
+
+univ-microservices-td_catalogue-data | Driver: local
+univ-microservices-td_commande-data | Driver: local
+univ-microservices-td_paiement-data | Driver: local

@@ -1,0 +1,40 @@
+VERIFICATION PATCH ET DELETE - COMMANDE SERVICE
+
+Source : resultats observes dans la console PowerShell.
+Acces : API Gateway http://localhost:9012
+
+Produit de reference :
+ID 1 - PC portable Dell - Test Docker Compose
+
+Commande temporaire : ID 2
+
+1. POST /api/v1/commandes
+   HTTP 201
+   Statut initial : EN_ATTENTE
+
+2. PATCH /api/v1/commandes/2/statut?statut=CONFIRMEE
+   HTTP 200
+   Nouveau statut : CONFIRMEE
+
+3. GET /api/v1/commandes/2
+   HTTP 200
+   Statut enregistre : CONFIRMEE
+
+4. DELETE /api/v1/commandes/2
+   HTTP 204
+
+5. GET /api/v1/commandes/2
+   HTTP 404
+   Suppression confirmee.
+
+6. GET /api/v1/commandes/1
+   Commande initiale preservee.
+   ID : 1
+   Statut : EN_ATTENTE
+   Montant : 1799.98
+
+La commande temporaire ID 2 a ete supprimee.
+La commande initiale ID 1 n'a pas ete modifiee.
+
+Note : ce fichier est une transcription des resultats
+observes, et non une capture automatique de la console.

@@ -1,0 +1,157 @@
+services:
+
+  discovery-service:
+    image: discovery-service:1.0
+    ports:
+      - "8764:8761"
+    environment:
+      SERVER_PORT: "8761"
+      EUREKA_CLIENT_REGISTER_WITH_EUREKA: "false"
+      EUREKA_CLIENT_FETCH_REGISTRY: "false"
+
+  config-service:
+    image: config-service:1.1
+    ports:
+      - "8891:8888"
+    environment:
+      SERVER_PORT: "8888"
+      SPRING_PROFILES_ACTIVE: native
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS: classpath:/configurations/
+
+  catalogue-db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: catalogue_db
+      POSTGRES_USER: catalogue_user
+      POSTGRES_PASSWORD: ${CATALOGUE_DB_PASSWORD:?Mot de passe catalogue manquant}
+    volumes:
+      - catalogue-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalogue_user -d catalogue_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  commande-db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: commande_db
+      POSTGRES_USER: commande_user
+      POSTGRES_PASSWORD: ${COMMANDE_DB_PASSWORD:?Mot de passe commande manquant}
+    volumes:
+      - commande-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U commande_user -d commande_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  paiement-db:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: paiement_db
+      POSTGRES_USER: paiement_user
+      POSTGRES_PASSWORD: ${PAIEMENT_DB_PASSWORD:?Mot de passe paiement manquant}
+    volumes:
+      - paiement-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paiement_user -d paiement_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  catalogue-service:
+    image: catalogue-service:1.2
+    ports:
+      - "8094:8081"
+    environment:
+      SERVER_PORT: "8081"
+      CONFIG_SERVER_URL: http://config-service:8888/
+      EUREKA_SERVER_URL: http://discovery-service:8761/eureka/
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://catalogue-db:5432/catalogue_db
+      SPRING_DATASOURCE_USERNAME: catalogue_user
+      SPRING_DATASOURCE_PASSWORD: ${CATALOGUE_DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      catalogue-db:
+        condition: service_healthy
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+  commande-service:
+    image: commande-service:1.1
+    ports:
+      - "8095:8082"
+    environment:
+      SERVER_PORT: "8082"
+      CONFIG_SERVER_URL: http://config-service:8888/
+      EUREKA_SERVER_URL: http://discovery-service:8761/eureka/
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://commande-db:5432/commande_db
+      SPRING_DATASOURCE_USERNAME: commande_user
+      SPRING_DATASOURCE_PASSWORD: ${COMMANDE_DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      commande-db:
+        condition: service_healthy
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+  paiement-service:
+    image: paiement-service:1.1
+    ports:
+      - "8096:8083"
+    environment:
+      SERVER_PORT: "8083"
+      CONFIG_SERVER_URL: http://config-service:8888/
+      EUREKA_SERVER_URL: http://discovery-service:8761/eureka/
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+      SPRING_DATASOURCE_URL: jdbc:postgresql://paiement-db:5432/paiement_db
+      SPRING_DATASOURCE_USERNAME: paiement_user
+      SPRING_DATASOURCE_PASSWORD: ${PAIEMENT_DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      paiement-db:
+        condition: service_healthy
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+
+  gateway-service:
+    image: gateway-service:1.1
+    ports:
+      - "9012:9000"
+    environment:
+      SERVER_PORT: "9000"
+      CONFIG_SERVER_URL: http://config-service:8888/
+      EUREKA_SERVER_URL: http://discovery-service:8761/eureka/
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "true"
+    depends_on:
+      discovery-service:
+        condition: service_started
+      config-service:
+        condition: service_started
+      catalogue-service:
+        condition: service_started
+      commande-service:
+        condition: service_started
+      paiement-service:
+        condition: service_started
+
+volumes:
+  catalogue-data:
+  commande-data:
+  paiement-data:
+
+networks:
+  default:
+    driver: bridge

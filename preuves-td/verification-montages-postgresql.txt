@@ -1,0 +1,5 @@
+MONTAGES DES VOLUMES POSTGRESQL
+
+catalogue-db | univ-microservices-td_catalogue-data|/var/lib/postgresql|true
+commande-db | univ-microservices-td_commande-data|/var/lib/postgresql|true
+paiement-db | univ-microservices-td_paiement-data|/var/lib/postgresql|true

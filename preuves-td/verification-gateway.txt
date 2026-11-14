@@ -1,0 +1,17 @@
+VERIFICATION API GATEWAY
+Point d'entree : http://localhost:9012
+
+CATALOGUE
+URL : http://localhost:9012/api/v1/produits/1
+HTTP : 200
+Reponse : {"id":1,"nom":"PC portable Dell - Test Docker Compose","description":"Produit pour tester les microservices","prix":899.99,"quantiteStock":15}
+
+COMMANDE
+URL : http://localhost:9012/api/v1/commandes/1
+HTTP : 200
+Reponse : {"id":1,"dateCommande":"2026-11-14T06:41:09.295042","statut":"EN_ATTENTE","montantTotal":1799.98,"lignes":[{"id":1,"produitId":1,"produitNom":"PC portable Dell - Test Docker Compose","quantite":2,"prixUnitaire":899.99}]}
+
+PAIEMENT
+URL : http://localhost:9012/api/v1/paiements/1
+HTTP : 200
+Reponse : {"id":1,"commandeId":1,"montant":1799.98,"modePaiement":"CARTE_BANCAIRE","statut":"ACCEPTE","datePaiement":"2026-11-14T06:42:52.572327"}

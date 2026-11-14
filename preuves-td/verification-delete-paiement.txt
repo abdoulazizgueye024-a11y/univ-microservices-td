@@ -1,0 +1,52 @@
+VERIFICATION DELETE - PAIEMENT SERVICE
+
+Source : transcription des resultats observes
+dans la console PowerShell.
+
+API Gateway : http://localhost:9012
+
+1. Verification du paiement initial ID 1
+   Montant : 1799.98
+   Statut : ACCEPTE
+   Resultat : conforme
+
+2. Creation du paiement temporaire
+   POST /api/v1/paiements
+   HTTP 201
+   Paiement ID : 2
+   Commande ID : 1
+   Mode : VIREMENT
+   Statut : ACCEPTE
+
+3. Consultation du paiement temporaire
+   GET /api/v1/paiements/2
+   HTTP 200
+
+4. Suppression du paiement temporaire
+   DELETE /api/v1/paiements/2
+   HTTP 204
+
+5. Verification de la suppression
+   GET /api/v1/paiements/2
+   HTTP 404
+
+6. Verification du paiement initial ID 1
+   Statut : ACCEPTE
+   Montant : 1799.98
+   Resultat : inchange
+
+7. Verification de la commande initiale ID 1
+   Statut : EN_ATTENTE
+   Montant : 1799.98
+   Resultat : inchange
+
+VALIDATION REUSSIE :
+DELETE PAIEMENT OPERATIONNEL.
+
+Le paiement temporaire ID 2 a ete supprime.
+Le paiement initial ID 1 a ete preserve.
+La commande initiale ID 1 a ete preservee.
+
+Note : ce fichier retranscrit les resultats
+observes ; il ne constitue pas une capture
+automatique de la console.

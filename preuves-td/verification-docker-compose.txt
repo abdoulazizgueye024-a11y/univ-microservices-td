@@ -1,0 +1,14 @@
+﻿VERIFICATION DOCKER COMPOSE
+Validation configuration : code 0
+Nombre de conteneurs : 9
+
+ETAT DES CONTENEURS
+catalogue-db | running | healthy | postgres:18
+catalogue-service | running | non definie | catalogue-service:1.2
+commande-db | running | healthy | postgres:18
+commande-service | running | non definie | commande-service:1.1
+config-service | running | non definie | config-service:1.1
+discovery-service | running | non definie | discovery-service:1.0
+gateway-service | running | non definie | gateway-service:1.1
+paiement-db | running | healthy | postgres:18
+paiement-service | running | non definie | paiement-service:1.1
