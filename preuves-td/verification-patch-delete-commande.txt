@@ -35,6 +35,3 @@ Commande temporaire : ID 2
 
 La commande temporaire ID 2 a ete supprimee.
 La commande initiale ID 1 n'a pas ete modifiee.
-
-Note : ce fichier est une transcription des resultats
-observes, et non une capture automatique de la console.

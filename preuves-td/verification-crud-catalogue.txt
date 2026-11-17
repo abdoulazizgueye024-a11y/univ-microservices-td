@@ -24,6 +24,3 @@ Produit temporaire : identifiant 2
 
 Le produit temporaire a ete supprime.
 Le produit initial ID 1 n'a pas ete utilise pour ces tests.
-
-Note : ce fichier est une transcription des resultats
-observes, et non une capture automatique de la console.

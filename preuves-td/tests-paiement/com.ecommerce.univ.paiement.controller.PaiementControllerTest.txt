@@ -1,0 +1,3 @@
+Test set: com.ecommerce.univ.paiement.controller.PaiementControllerTest
+
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.329 s -- in com.ecommerce.univ.paiement.controller.PaiementControllerTest

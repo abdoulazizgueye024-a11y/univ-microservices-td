@@ -1,16 +1,26 @@
 package com.ecommerce.univ.catalogue.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+
 
 public class ProduitRequestDTO {
 
 
+    @NotBlank(message = "Le nom est obligatoire")
     private String nom;
 
     private String description;
 
 
+    @NotNull(message = "Le prix est obligatoire")
+    @Positive(message = "Le prix doit etre strictement positif")
     private Double prix;
 
+    @NotNull(message = "Le stock est obligatoire")
+    @PositiveOrZero(message = "Le stock ne peut pas etre negatif")
     private Integer quantiteStock;
 
     public ProduitRequestDTO() {}

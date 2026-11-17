@@ -1,0 +1,24 @@
+﻿Verification des microservices via la Gateway
+
+SERVICE             STATUS
+catalogue-db        Up 42 minutes (healthy)
+catalogue-service   Up 12 minutes (healthy)
+commande-db         Up 42 minutes (healthy)
+commande-service    Up 12 minutes (healthy)
+config-service      Up 34 minutes (healthy)
+discovery-service   Up 34 minutes (healthy)
+gateway-service     Up 3 minutes (healthy)
+paiement-db         Up 42 minutes (healthy)
+paiement-service    Up 12 minutes (healthy)
+
+Pour Catalogue
+HTTP 200
+[{"id":1,"nom":"PC portable Dell - Test Docker Compose","description":"Produit pour tester les microservices","prix":899.99,"quantiteStock":15}]
+
+Pour Commande
+HTTP 200
+[{"id":1,"dateCommande":"2026-11-14T06:41:09.295042","statut":"EN_ATTENTE","montantTotal":1799.98,"lignes":[{"id":1,"produitId":1,"produitNom":"PC portable Dell - Test Docker Compose","quantite":2,"prixUnitaire":899.99}]}]
+
+Pour Paiement
+HTTP 200
+[{"id":1,"commandeId":1,"montant":1799.98,"modePaiement":"CARTE_BANCAIRE","statut":"ACCEPTE","datePaiement":"2026-11-14T06:42:52.572327"}]

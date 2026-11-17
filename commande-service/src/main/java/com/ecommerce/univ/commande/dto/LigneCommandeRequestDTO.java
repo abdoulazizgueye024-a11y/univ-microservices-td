@@ -1,10 +1,17 @@
 package com.ecommerce.univ.commande.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 
 public class LigneCommandeRequestDTO {
 
+    @NotNull(message = "Le produit est obligatoire")
+    @Positive(message = "L identifiant du produit doit etre positif")
     private Long produitId;
 
+    @NotNull(message = "La quantite est obligatoire")
+    @Positive(message = "La quantite doit etre strictement positive")
     private Integer quantite;
 
     public LigneCommandeRequestDTO() {}

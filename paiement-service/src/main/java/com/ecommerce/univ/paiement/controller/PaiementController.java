@@ -5,6 +5,7 @@ import com.ecommerce.univ.paiement.dto.PaiementResponseDTO;
 import com.ecommerce.univ.paiement.service.PaiementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,7 @@ public class PaiementController {
     }
 
     @PostMapping
-    public ResponseEntity<PaiementResponseDTO> createPaiement(@RequestBody PaiementRequestDTO dto) {
+    public ResponseEntity<PaiementResponseDTO> createPaiement(@Valid @RequestBody PaiementRequestDTO dto) {
         log.debug("POST /api/v1/paiements");
         PaiementResponseDTO created = paiementService.createPaiement(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);

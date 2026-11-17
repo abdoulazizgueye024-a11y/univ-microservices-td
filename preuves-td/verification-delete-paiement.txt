@@ -46,7 +46,3 @@ DELETE PAIEMENT OPERATIONNEL.
 Le paiement temporaire ID 2 a ete supprime.
 Le paiement initial ID 1 a ete preserve.
 La commande initiale ID 1 a ete preservee.
-
-Note : ce fichier retranscrit les resultats
-observes ; il ne constitue pas une capture
-automatique de la console.

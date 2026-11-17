@@ -1,5 +1,7 @@
 package com.ecommerce.univ.catalogue.controller;
 
+import jakarta.validation.Valid;
+
 import com.ecommerce.univ.catalogue.dto.ProduitRequestDTO;
 import com.ecommerce.univ.catalogue.dto.ProduitResponseDTO;
 import com.ecommerce.univ.catalogue.service.ProduitService;
@@ -36,7 +38,7 @@ public class ProduitController {
     }
 
     @PostMapping
-    public ResponseEntity<ProduitResponseDTO> createProduit(@RequestBody ProduitRequestDTO dto) {
+    public ResponseEntity<ProduitResponseDTO> createProduit(@Valid @RequestBody ProduitRequestDTO dto) {
         log.debug("POST /api/v1/produits");
         ProduitResponseDTO created = produitService.createProduit(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
@@ -44,7 +46,7 @@ public class ProduitController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProduitResponseDTO> updateProduit(@PathVariable Long id,
-                                                              @RequestBody ProduitRequestDTO dto) {
+                                                              @Valid @RequestBody ProduitRequestDTO dto) {
         log.debug("PUT /api/v1/produits/{}", id);
         return ResponseEntity.ok(produitService.updateProduit(id, dto));
     }

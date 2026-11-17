@@ -1,5 +1,7 @@
 package com.ecommerce.univ.commande.controller;
 
+import jakarta.validation.Valid;
+
 import com.ecommerce.univ.commande.dto.CommandeRequestDTO;
 import com.ecommerce.univ.commande.dto.CommandeResponseDTO;
 import com.ecommerce.univ.commande.service.CommandeService;
@@ -36,7 +38,7 @@ public class CommandeController {
     }
 
     @PostMapping
-    public ResponseEntity<CommandeResponseDTO> createCommande(@RequestBody CommandeRequestDTO dto) {
+    public ResponseEntity<CommandeResponseDTO> createCommande(@Valid @RequestBody CommandeRequestDTO dto) {
         log.debug("POST /api/v1/commandes");
         CommandeResponseDTO created = commandeService.createCommande(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);

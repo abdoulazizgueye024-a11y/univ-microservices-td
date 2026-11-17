@@ -1,10 +1,14 @@
 package com.ecommerce.univ.commande.dto;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.List;
 
 public class CommandeRequestDTO {
 
-    private List<LigneCommandeRequestDTO> lignes;
+    @NotEmpty(message = "La commande doit contenir au moins une ligne")
+    private List<@Valid LigneCommandeRequestDTO> lignes;
 
     public CommandeRequestDTO() {}
 

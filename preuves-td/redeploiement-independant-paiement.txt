@@ -1,0 +1,18 @@
+TP - Techniques de conteneurisation et microservices
+Preuve : redeploiement independant du service Paiement
+
+- Paiement recree avec --no-deps --force-recreate
+- Identifiants des 8 autres conteneurs inchanges
+- Paiement redevenu healthy apres redemarrage
+- Aucun volume PostgreSQL supprime
+
+VERIFICATION DES CONTENEURS
+discovery-service | ID=47f6dcaaa86d756354b5c30df182178332b0a98ea6150d5e17e9e6087e21c999 | Etat=running | Sante=healthy
+config-service | ID=633308dc9f7020bfb5e1f7c5de377b8afa9d69d192463cb71bc1c5bb3d99db15 | Etat=running | Sante=healthy
+catalogue-service | ID=b3cd6a80e53cf1e9c60f4f5c425e6f56dfc88e37bafedf93067725bcab6ddcc9 | Etat=running | Sante=healthy
+commande-service | ID=aba446b897af55a69917a311e9a3352031b7bd321378bcb9c64d72c151ac173b | Etat=running | Sante=healthy
+paiement-service | ID=0307e21d6e2fdf7d046798466c55098fb3d3d5472a8dd9325aa855f3b3f88130 | Etat=running | Sante=healthy
+gateway-service | ID=c976697addb7d76a5b647d76e08af91453634d946c1c98d2a625ca7a934b61bd | Etat=running | Sante=healthy
+catalogue-db | ID=0347591eaed2f58ec736225a58827f4cd45c6bf3dedb78d72e5eefbc74a94ba2 | Etat=running | Sante=healthy
+commande-db | ID=aeedf3e7ea7a04d796773405f80d4abfde704c1ecba196db2ca43001d8f988fa | Etat=running | Sante=healthy
+paiement-db | ID=fef6a3d862cb332bbe91544425dd101640bd00da676070d4ef2801c75dd6c6d5 | Etat=running | Sante=healthy
