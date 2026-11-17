@@ -1,0 +1,38 @@
+TEST DE PERSISTANCE POSTGRESQL
+Date : 2026-11-17 19:25:48
+
+Les trois conteneurs PostgreSQL ont ete recrees
+individuellement avec conservation des volumes.
+Les tests precedents ont confirme la conservation des donnees.
+
+NAME                                        IMAGE                   COMMAND                  SERVICE             CREATED             STATUS                       PORTS
+univ-microservices-td-catalogue-db-1        postgres:18             "docker-entrypoint.sÔÇª"   catalogue-db        4 minutes ago       Up 4 minutes (healthy)       5432/tcp
+univ-microservices-td-catalogue-service-1   catalogue-service:1.2   "java -jar /app/app.ÔÇª"   catalogue-service   About an hour ago   Up About an hour (healthy)   0.0.0.0:8094->8081/tcp, [::]:8094->8081/tcp
+univ-microservices-td-commande-db-1         postgres:18             "docker-entrypoint.sÔÇª"   commande-db         3 minutes ago       Up 3 minutes (healthy)       5432/tcp
+univ-microservices-td-commande-service-1    commande-service:1.1    "java -jar /app/app.ÔÇª"   commande-service    About an hour ago   Up About an hour (healthy)   0.0.0.0:8095->8082/tcp, [::]:8095->8082/tcp
+univ-microservices-td-config-service-1      config-service:1.1      "java -jar /app/app.ÔÇª"   config-service      2 hours ago         Up 2 hours (healthy)         0.0.0.0:8891->8888/tcp, [::]:8891->8888/tcp
+univ-microservices-td-discovery-service-1   discovery-service:1.0   "java -jar /app/app.ÔÇª"   discovery-service   2 hours ago         Up 2 hours (healthy)         0.0.0.0:8764->8761/tcp, [::]:8764->8761/tcp
+univ-microservices-td-gateway-service-1     gateway-service:1.1     "java -jar /app/app.ÔÇª"   gateway-service     About an hour ago   Up About an hour (healthy)   0.0.0.0:9012->9000/tcp, [::]:9012->9000/tcp
+univ-microservices-td-paiement-db-1         postgres:18             "docker-entrypoint.sÔÇª"   paiement-db         2 minutes ago       Up 2 minutes (healthy)       5432/tcp
+univ-microservices-td-paiement-service-1    paiement-service:1.1    "java -jar /app/app.ÔÇª"   paiement-service    About an hour ago   Up About an hour (healthy)   0.0.0.0:8096->8083/tcp, [::]:8096->8083/tcp
+
+Pour catalogue_db
+Volume conserve : univ-microservices-td_catalogue-data
+Etat : healthy
+produits : 1 ligne(s)
+
+pour commande_db
+Volume conserve : univ-microservices-td_commande-data
+Etat : healthy
+commandes : 1 ligne(s)
+lignes_commande : 1 ligne(s)
+
+Pour paiement_db
+Volume conserve : univ-microservices-td_paiement-data
+Etat : healthy
+paiements : 1 ligne(s)
+
+API VIA GATEWAY
+produits : HTTP 200
+commandes : HTTP 200
+paiements : HTTP 200

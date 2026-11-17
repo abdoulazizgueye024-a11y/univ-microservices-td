@@ -224,8 +224,12 @@ Les volumes sont montés sur /var/lib/postgresql.
 L'isolation des données entre les trois bases a été
 vérifiée lors des tests du projet.
 
-La persistance après recréation complète des conteneurs
-reste à vérifier séparément.
+La persistance a été vérifiée en recréant individuellement
+les trois conteneurs PostgreSQL sans supprimer leurs volumes.
+Les quatre enregistrements ont été conservés.
+Les neuf conteneurs étaient healthy et les trois API
+répondaient HTTP 200 après les tests.
+La preuve figure dans preuves-td/persistance-postgresql.txt.
 
 ## 12. Vérifications réalisées
 
