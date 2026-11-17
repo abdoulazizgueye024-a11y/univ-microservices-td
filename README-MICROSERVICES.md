@@ -233,7 +233,7 @@ Les vérifications effectuées comprennent :
 
 - Validation du fichier Docker Compose.
 - Démarrage des neuf conteneurs.
-- État healthy des trois bases PostgreSQL.
+- État healthy des neuf conteneurs (six services et trois bases PostgreSQL).
 - Enregistrement des quatre clients dans Eureka.
 - Récupération des configurations via Config Server.
 - Routage des requêtes HTTP par Gateway.
@@ -258,8 +258,8 @@ automatiquement le statut de la commande.
 La création d'une commande ne garantit pas une
 décrémentation automatique du stock.
 
-Les tests fonctionnels réalisés ne constituent pas
-une suite complète de tests automatisés.
+57 tests automatisés ont réussi sur les services métier.
+Ils ne couvrent pas tous les scénarios possibles.
 
 Cette configuration est destinée au mini-projet
 pédagogique et non à un déploiement de production.
@@ -277,7 +277,7 @@ Le rendu final doit comprendre :
 - Le lien du dépôt GitHub dans le compte rendu.
 - Le lien de l'espace Docker Hub dans le compte rendu.
 
-Les liens GitHub et Docker Hub seront ajoutés
-après leur création ou leur vérification.
+Dépôt GitHub : https://github.com/abdoulazizgueye024-a11y/univ-microservices-td
+Docker Hub : https://hub.docker.com/u/abdoulaziz97
 
 Date limite communiquée : avant le 15 décembre 2026.
